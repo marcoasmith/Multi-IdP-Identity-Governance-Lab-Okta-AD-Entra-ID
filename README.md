@@ -1,1 +1,1 @@
-# Okta-AD-Entra-Governance-Lab
+# Multi-IdP-Identity-Governance-Lab-Okta-AD-Entra-ID
