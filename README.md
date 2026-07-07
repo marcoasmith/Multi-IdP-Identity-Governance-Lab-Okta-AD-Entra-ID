@@ -176,8 +176,4 @@ The gap between AD action and downstream reflection creates a window where a dis
 - Lifecycle propagation analysis and orphaned account risk identification
 - Security monitoring and anomaly detection using KQL and Azure Log Analytics
 
----
 
-## Related Projects
-
-- [Active Directory & Entra ID Hybrid IAM Implementation](https://github.com/marcoasmith/Active-Directory-Entra-ID-Hybrid-IAM-Lab), the foundational AD and Entra ID environment this project builds on.
