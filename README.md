@@ -80,11 +80,17 @@ Many enterprises run more than one identity provider, whether due to mergers and
 
 ### Phase 1 — Okta AD Agent Integration
 
-- Installed the Okta AD Agent on the domain-joined Windows Server 2025 controller
-- Imported existing AD OUs, users, and groups into Okta
-- Configured delegated authentication so Okta validates credentials directly against Active Directory rather than storing separate passwords
-- Documented import matching rules used to reconcile AD users against existing Okta profiles
-- Verified agent health and tested end-to-end login using AD credentials
+- Created a dedicated `OktaTestUsers` OU in Active Directory to scope the AD Agent import within the Okta Integrator Free Plan's 10-user limit, rather than importing an entire production-sized OU
+- Installed the Okta AD Agent on the domain-joined Windows Server 2025 controller and registered it with the Okta org
+- Granted the auto-created `OktaService` account Domain Admins permissions to support write access for future user provisioning
+- Scoped the Okta import to the `OktaTestUsers` OU only, for both Users and Groups sync
+- Ran a full import and confirmed 9 new Okta users, activating them immediately on confirmation
+- Enabled delegated authentication so Okta validates credentials directly against Active Directory rather than storing separate passwords
+- Verified delegated authentication using Okta's built-in test tool, confirming successful authentication using a test user's AD credentials in User Principal Name (UPN) format (`username@examlabpractice.com`)
+
+<img width="800" height="550" alt="Screenshot 2026-07-18 at 1 48 49 PM" src="https://github.com/user-attachments/assets/23823d2b-4943-453d-8589-a9f2f3cb1e98" />
+<img width="800" height="550" alt="Screenshot 2026-07-21 at 10 20 56 AM" src="https://github.com/user-attachments/assets/d20527cd-3c5e-4413-b85b-43f3cc9ccd10" />
+
 
 ---
 
