@@ -24,6 +24,14 @@ A hands-on identity governance lab simulating a hybrid enterprise environment wh
 
 Many enterprises run more than one identity provider, whether due to mergers and acquisitions, incumbent tooling from before a Microsoft 365 migration, or a deliberate choice to keep a vendor-neutral SSO layer for non-Microsoft SaaS apps while relying on Entra ID for Microsoft workloads. This lab replicates that reality: Okta handles broad SaaS SSO, Entra ID handles Microsoft 365 and Azure-native access, and both are fed by the same on-premises Active Directory. The project demonstrates federation, RBAC and group-based access assignment, access governance, and cross-system reconciliation, using the Okta API and Microsoft Graph API for reporting.
 
+
+
+
+
+
+<img width="793" height="542" alt="Screenshot 2026-07-10 at 9 34 40 AM" src="https://github.com/user-attachments/assets/b3e8e5b2-0f2f-407e-be02-1e0069e43b22" />
+
+
 ---
 
 ## Technologies Used
