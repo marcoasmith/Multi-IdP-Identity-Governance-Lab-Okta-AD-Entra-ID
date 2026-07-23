@@ -114,10 +114,7 @@ Many enterprises run more than one identity provider, whether due to mergers and
 
 | Application | Protocol | Assigned Group | Sign-On Policy |
 |---|---|---|---|
-| AWS IAM Identity Center | SAML | ITAdmins | Require MFA, no additional restrictions |
-| Sample SAML App | SAML | AllEmployees | Standard sign-on policy |
-| GitHub | OIDC | ITAdmins | Require MFA, step-up on new device |
-| Salesforce Dev Org | OIDC | Sales | Standard sign-on policy |
+| AWS IAM Identity Center | SAML | GRP_ITAdmins | Require any two factor types, prioritized above default policy |
 
 ---
 
