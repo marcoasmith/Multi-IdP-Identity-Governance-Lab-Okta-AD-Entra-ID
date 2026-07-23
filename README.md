@@ -100,6 +100,8 @@ Many enterprises run more than one identity provider, whether due to mergers and
 - Assigned application access based on AD-synced security groups rather than individual users
 - Configured a distinct Sign-On Policy requiring step-up MFA for a higher-privilege application group
 - Documented the SAML vs. OIDC protocol choice per application
+- <img width="1642" height="452" alt="Screenshot 2026-07-23 at 10 18 00 AM" src="https://github.com/user-attachments/assets/2ed2dc1b-1b0b-4a17-939d-5610ff4d7c50" />
+
 
 ## SSO Application Access Policy
 
