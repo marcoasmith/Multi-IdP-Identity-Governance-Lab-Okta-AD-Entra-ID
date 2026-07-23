@@ -55,23 +55,29 @@ Many enterprises run more than one identity provider, whether due to mergers and
 ## Architecture
 
 ```
-                         ┌────────────────────────────┐
-                         │  On-Premises Active          │
-                         │  Directory (Source of Truth) │
-                         │  Domain: examlabpractice.com  │
-                         └──────────┬──────────┬─────────┘
-                                    │           │
-                     Okta AD Agent  │           │  Entra Connect Sync
-                                    ▼           ▼
-                   ┌─────────────────────┐  ┌──────────────────────────┐
-                   │        Okta          │  │     Microsoft Entra ID    │
-                   │                       │  │                           │
-                   │  Delegated Auth       │  │  Microsoft 365 / Azure    │
-                   │  SSO (SAML/OIDC)      │  │  Conditional Access       │
-                   │  Sign-On Policies     │  │  RBAC / PIM               │
-                   │  System Log (API)     │  │  Log Analytics            │
-                   └─────────────────────┘  │  Sign-in Logs (Graph API) │
-                                             └──────────────────────────┘
+      ┌─────────────────────────────┐
+      │     On-Premises Active      │
+      │                             │
+      │ Directory (Source of Truth) │
+      │ Domain: examlabpractice.com │
+      └─────────────────────────────┘
+                     │
+                     │  Okta AD Agent
+                     ▼
+           ┌──────────────────┐
+           │       Okta       │
+           │                  │
+           │  Delegated Auth  │
+           │    SSO (SAML)    │
+           │ Sign-On Policies │
+           └──────────────────┘
+                     │
+                     ▼
+        ┌─────────────────────────┐
+        │ AWS IAM Identity Center │
+        │                         │
+        │ (SAML Service Provider) │
+        └─────────────────────────┘
 ```
 
 ---
