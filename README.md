@@ -120,9 +120,9 @@ Many enterprises run more than one identity provider, whether due to mergers and
 
 ### Phase 3 — Entra ID Coexistence
 
-- Kept Microsoft Entra Connect syncing the same on-prem AD to Entra ID for Microsoft 365 and Azure access
-- Scoped Okta to non-Microsoft SaaS applications only, leaving Microsoft-ecosystem access to Entra ID
-- Documented the coexistence model so the two IdPs read as an intentional architectural split, not redundant tooling
+- Verified Microsoft Entra Connect is still actively syncing the on-prem AD domain to Entra ID, confirmed via continuous successful sync runs in Synchronization Service Manager
+- Found Entra Connect scoped to sync the entire domain rather than excluding OktaTestUsers, while Okta's AD Agent remains separately scoped to that OU only
+- Documented the resulting model: AD as the single source of truth, with Okta and Entra ID independently syncing for their respective app ecosystems despite some directory-level overlap
 
 ## Why Two Identity Providers
 
