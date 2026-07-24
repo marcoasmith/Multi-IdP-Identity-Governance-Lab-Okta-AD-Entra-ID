@@ -123,6 +123,8 @@ Many enterprises run more than one identity provider, whether due to mergers and
 - Verified Microsoft Entra Connect is still actively syncing the on-prem AD domain to Entra ID, confirmed via continuous successful sync runs in Synchronization Service Manager
 - Found Entra Connect scoped to sync the entire domain rather than excluding OktaTestUsers, while Okta's AD Agent remains separately scoped to that OU only
 - Documented the resulting model: AD as the single source of truth, with Okta and Entra ID independently syncing for their respective app ecosystems despite some directory-level overlap
+- <img width="932" height="596" alt="Screenshot 2026-07-24 at 9 21 14 AM" src="https://github.com/user-attachments/assets/07129750-4f2b-4883-8f4f-12b3b58ff7ec" />
+
 
 ## Why Two Identity Providers
 
