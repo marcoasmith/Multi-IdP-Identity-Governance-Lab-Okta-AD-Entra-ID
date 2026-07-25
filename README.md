@@ -165,10 +165,11 @@ Okta's manually-triggered imports reflected changes within 1-2 minutes, while En
 
 Okta's native Access Certification feature requires a Governance-tier license not included in the Integrator Free Plan used for this lab. To demonstrate the same governance outcome, this phase was implemented as a custom script rather than the native UI feature.
 
-- Built a Python script using the Okta API and Microsoft Graph API to pull active users and their status from both Okta and Entra ID
-- Cross-referenced each account's status against Active Directory (the source of truth)
-- Flagged accounts active in Okta and/or Entra ID but disabled in AD, simulating orphaned account detection
-- Documented findings as a mini audit report
+- Registered an app in Entra ID with Microsoft Graph's User.Read.All application permission, and created an Okta API token, to enable programmatic access to both platforms
+- Built a Python script that reads Active Directory account status from a PowerShell-exported CSV (the source of truth), then pulls user status from both the Okta API and Microsoft Graph API
+- Cross-referenced each account's AD status against its Okta and Entra ID status, flagging any account disabled in AD but still active downstream
+- Validated the detection logic by disabling a test user in AD without re-syncing Okta, confirming the script correctly flagged the account as orphaned (disabled in AD, still Active in Okta)
+- Printed findings as a console-based audit report
 
 ## Orphaned Account Detection Logic
 
@@ -176,8 +177,6 @@ Okta's native Access Certification feature requires a Governance-tier license no
 |---|---|---|---|
 | Account status | Active Directory | Okta active status | AD disabled, Okta still active |
 | Account status | Active Directory | Entra ID active status | AD disabled, Entra ID still active |
-| Group membership drift | Active Directory | Okta group assignment | AD group removed, Okta assignment unchanged |
-
 ---
 
 ### Phase 6 — Monitoring & Reporting
