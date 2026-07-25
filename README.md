@@ -171,6 +171,9 @@ Okta's native Access Certification feature requires a Governance-tier license no
 - Validated the detection logic by disabling a test user in AD without re-syncing Okta, confirming the script correctly flagged the account as orphaned (disabled in AD, still Active in Okta)
 - Printed findings as a console-based audit report
 
+<img width="1111" height="544" alt="Screenshot 2026-07-25 at 3 05 04 PM" src="https://github.com/user-attachments/assets/0da82e93-b7d2-4dc9-bdc8-ad5f4aee7f30" />
+
+
 ## Orphaned Account Detection Logic
 
 | Check | Source of Truth | Compared Against | Flag Condition |
