@@ -139,20 +139,25 @@ Many enterprises run more than one identity provider, whether due to mergers and
 
 ### Phase 4 — Lifecycle Propagation Testing
 
-- Created a new AD user and timed propagation into both Okta (scheduled import) and Entra ID (delta sync)
-- Disabled a user in AD and timed how long deprovisioning took to reflect in each downstream system
-- Documented the sync interval differences between Okta's import schedule and Entra Connect's delta sync cycle
+- Created a new AD user in the OktaTestUsers OU and measured propagation time into both Okta (manually triggered import) and Entra ID (automatic delta sync)
+- Disabled the same user in AD and measured deprovisioning propagation into each system
+- Found that Okta's import schedule was set to "Never" (manual-only) in this lab, so all Okta timings reflect manually triggered imports rather than a scheduled interval
 
 ## Propagation Timing Results
 
-| Event | AD Action | Okta Propagation | Entra ID Propagation |
+| Event | AD Action Time | Okta Propagation | Entra ID Propagation |
 |---|---|---|---|
-| New user creation | Created in target OU | Reflected after next scheduled import | Reflected after next delta sync |
-| Attribute update | Group membership changed | Reflected after next scheduled import | Reflected after next delta sync |
-| Account disablement | Account disabled | Delayed until next import cycle | Delayed until next delta sync |
+| New user creation | 3:06 PM | ~2 min (manual import) | ~6 min (automatic delta sync) |
+| Account disablement | 9:24 AM | ~1 min (manual import) | Delayed until a delta sync was manually triggered the next day, following an overnight gap where the domain controller VM was offline |
 
 ### Risk Identified
-The gap between AD action and downstream reflection creates a window where a disabled AD account can remain active in Okta and/or Entra ID, a real operational risk relevant to deprovisioning SLAs in production environments.
+
+Okta's manually-triggered imports reflected changes within 1-2 minutes, while Entra Connect's automatic delta sync took roughly 6 minutes under normal conditions. During deprovisioning testing, Entra Connect's sync scheduler appeared to pause while the domain controller VM was offline overnight, delaying propagation of the disabled account until a delta sync was manually triggered the next day. This demonstrates that propagation delay isn't bounded only by the scheduled sync interval, it's also dependent on the sync server's uptime, a real operational risk in environments where the sync infrastructure itself isn't highly available.
+<img width="792" height="800" alt="Screenshot 2026-07-25 at 9 42 43 AM" src="https://github.com/user-attachments/assets/aefbaf11-768a-48c0-8115-690f3dd9a188" />
+
+<img width="1067" height="510" alt="Screenshot 2026-07-25 at 9 39 52 AM" src="https://github.com/user-attachments/assets/7476c3c5-e4a0-47a8-bb78-e52ddeb6f4b8" />
+
+
 
 ---
 
