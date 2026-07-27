@@ -210,4 +210,4 @@ Okta's native Access Certification feature requires a Governance-tier license no
 - Sign-On Policy and Conditional Access design for risk-based authentication
 - Custom access review scripting using the Okta API and Microsoft Graph API
 - Lifecycle propagation analysis and orphaned account risk identification
-- Security monitoring and anomaly detection using KQL and Azure Log Analytics
+- Security monitoring and anomaly detection using Python and the Okta System Log API
