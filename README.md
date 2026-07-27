@@ -189,6 +189,9 @@ Okta's native Access Certification feature requires a Governance-tier license no
 - Built a repeated MFA failure detection script that scans System Log data and flags any user with 3+ MFA failures within a 15-minute window, a common signal for credential-stuffing or MFA-fatigue attacks
 - Entra ID sign-in log correlation is planned but currently blocked: diagnostic logging is configured correctly (tenant, workspace, and category all confirmed) but SignInLogs is not yet populating in Log Analytics, under active troubleshooting
 
+<img width="1261" height="546" alt="Screenshot 2026-07-27 at 1 04 18 PM" src="https://github.com/user-attachments/assets/4517a67a-1b21-4f18-8dd1-a4144ca03561" />
+
+
 ## Monitoring Coverage
 
 | Query Purpose | Data Source | Detection Goal | Status |
