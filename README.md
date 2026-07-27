@@ -184,17 +184,17 @@ Okta's native Access Certification feature requires a Governance-tier license no
 
 ### Phase 6 — Monitoring & Reporting
 
-- Pulled Okta System Log data via the Okta API for sign-in and policy evaluation events
-- Correlated Okta sign-in activity with Entra ID sign-in logs in Azure Log Analytics
-- Wrote KQL queries for cross-system anomaly detection
+- Built a Python script to pull Okta System Log data via the Okta API, covering sign-in events, MFA authentication events, and policy evaluation events, with cursor-based pagination handling
+- Built a repeated MFA failure detection script that scans System Log data and flags any user with 3+ MFA failures within a 15-minute window, a common signal for credential-stuffing or MFA-fatigue attacks
+- Entra ID sign-in log correlation is planned but currently blocked: diagnostic logging is configured correctly (tenant, workspace, and category all confirmed) but SignInLogs is not yet populating in Log Analytics, under active troubleshooting
 
 ## Monitoring Coverage
 
-| Query Purpose | Data Source | Detection Goal |
-|---|---|---|
-| Off-hours sign-ins | Okta System Log + Entra sign-in logs | Flag authentication outside normal business hours |
-| Repeated MFA failures | Okta System Log | Identify possible credential-stuffing attempts |
-| Inconsistent account state | Okta API + Microsoft Graph API | Identify accounts active in one system but disabled in AD |
+| Query Purpose | Data Source | Detection Goal | Status |
+|---|---|---|---|
+| Repeated MFA failures | Okta System Log | Identify possible credential-stuffing attempts | Implemented and tested |
+| Off-hours sign-ins | Okta System Log + Entra sign-in logs | Flag authentication outside normal business hours | Planned, pending Entra log ingestion |
+| Inconsistent account state | Okta API + Microsoft Graph API | Identify accounts active in one system but disabled in AD | Planned |
 
 ---
 
