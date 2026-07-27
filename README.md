@@ -182,6 +182,7 @@ Okta's native Access Certification feature requires a Governance-tier license no
 | Account status | Active Directory | Entra ID active status | AD disabled, Entra ID still active |
 ---
 
+
 ### Phase 6 — Monitoring & Reporting
 
 - Built a Python script to pull Okta System Log data via the Okta API, covering sign-in events, MFA authentication events, and policy evaluation events, with cursor-based pagination handling
